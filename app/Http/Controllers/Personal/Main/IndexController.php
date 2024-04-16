@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Main;
+namespace App\Http\Controllers\Personal\Main;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 
-
 class IndexController extends Controller
 {
-    public function __invoke():View
+    public function __invoke() :View
     {
-        return view('main.index');
+        return view('personal.main.index');
     }
 }
-

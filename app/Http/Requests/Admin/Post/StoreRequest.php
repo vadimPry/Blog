@@ -44,8 +44,8 @@ class StoreRequest extends FormRequest
             'preview_image.required' => 'this field must be filled',
             'preview_image.file' => 'you need to select a file',
             'category_id.required' => 'this field must be filled',
-            'category.integer' => 'the id of the category_id field must have a type integer',
-            'category.exists' => 'the id of the category_id field must be in the database',
+            'main.integer' => 'the id of the category_id field must have a type integer',
+            'main.exists' => 'the id of the category_id field must be in the database',
             'tag_ids.array' => 'you need to send an array of data',
         ];
     }

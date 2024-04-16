@@ -427,8 +427,8 @@
   var SELECTOR_CONTROL_SIDEBAR = '.control-sidebar';
   var SELECTOR_CONTROL_SIDEBAR_CONTENT$1 = '.control-sidebar-content';
   var SELECTOR_DATA_TOGGLE$4 = '[data-widget="control-sidebar"]';
-  var SELECTOR_HEADER$1 = '.main-header';
-  var SELECTOR_FOOTER$1 = '.main-footer';
+  var SELECTOR_HEADER$1 = '.category-header';
+  var SELECTOR_FOOTER$1 = '.category-footer';
   var CLASS_NAME_CONTROL_SIDEBAR_ANIMATE = 'control-sidebar-animate';
   var CLASS_NAME_CONTROL_SIDEBAR_OPEN$1 = 'control-sidebar-open';
   var CLASS_NAME_CONTROL_SIDEBAR_SLIDE = 'control-sidebar-slide-open';
@@ -1210,10 +1210,10 @@
   var SELECTOR_TAB_EMPTY = SELECTOR_TAB_CONTENT + " .tab-empty";
   var SELECTOR_TAB_LOADING = SELECTOR_TAB_CONTENT + " .tab-loading";
   var SELECTOR_TAB_PANE = SELECTOR_TAB_CONTENT + " .tab-pane";
-  var SELECTOR_SIDEBAR_MENU_ITEM = '.main-sidebar .nav-item > a.nav-link';
+  var SELECTOR_SIDEBAR_MENU_ITEM = '.category-sidebar .nav-item > a.nav-link';
   var SELECTOR_SIDEBAR_SEARCH_ITEM = '.sidebar-search-results .list-group-item';
-  var SELECTOR_HEADER_MENU_ITEM = '.main-header .nav-item a.nav-link';
-  var SELECTOR_HEADER_DROPDOWN_ITEM = '.main-header a.dropdown-item';
+  var SELECTOR_HEADER_MENU_ITEM = '.category-header .nav-item a.nav-link';
+  var SELECTOR_HEADER_DROPDOWN_ITEM = '.category-header a.dropdown-item';
   var CLASS_NAME_IFRAME_MODE$1 = 'iframe-mode';
   var CLASS_NAME_FULLSCREEN_MODE = 'iframe-mode-fullscreen';
   var Default$7 = {
@@ -1690,13 +1690,13 @@
   var NAME$6 = 'Layout';
   var DATA_KEY$6 = 'lte.layout';
   var JQUERY_NO_CONFLICT$6 = $__default["default"].fn[NAME$6];
-  var SELECTOR_HEADER = '.main-header';
-  var SELECTOR_MAIN_SIDEBAR = '.main-sidebar';
-  var SELECTOR_SIDEBAR$1 = '.main-sidebar .sidebar';
+  var SELECTOR_HEADER = '.category-header';
+  var SELECTOR_MAIN_SIDEBAR = '.category-sidebar';
+  var SELECTOR_SIDEBAR$1 = '.category-sidebar .sidebar';
   var SELECTOR_CONTENT = '.content-wrapper';
   var SELECTOR_CONTROL_SIDEBAR_CONTENT = '.control-sidebar-content';
   var SELECTOR_CONTROL_SIDEBAR_BTN = '[data-widget="control-sidebar"]';
-  var SELECTOR_FOOTER = '.main-footer';
+  var SELECTOR_FOOTER = '.category-footer';
   var SELECTOR_PUSHMENU_BTN = '[data-widget="pushmenu"]';
   var SELECTOR_LOGIN_BOX = '.login-box';
   var SELECTOR_REGISTER_BOX = '.register-box';
@@ -2175,7 +2175,7 @@
   var CLASS_NAME_SEARCH_RESULTS = 'sidebar-search-results';
   var CLASS_NAME_LIST_GROUP = 'list-group';
   var SELECTOR_DATA_WIDGET$1 = '[data-widget="sidebar-search"]';
-  var SELECTOR_SIDEBAR = '.main-sidebar .nav-sidebar';
+  var SELECTOR_SIDEBAR = '.category-sidebar .nav-sidebar';
   var SELECTOR_NAV_LINK = '.nav-link';
   var SELECTOR_NAV_TREEVIEW = '.nav-treeview';
   var SELECTOR_SEARCH_INPUT$1 = SELECTOR_DATA_WIDGET$1 + " .form-control";

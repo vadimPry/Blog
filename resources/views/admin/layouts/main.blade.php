@@ -50,6 +50,14 @@
                     </a>
                 </li>
             </ul>
+            <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('post.index') }}">Blog</a>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('personal.main.index') }}">Personal</a>
+                    </li>
+            </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <form action="{{ route('login') }}">
@@ -76,7 +84,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                @yield('content')
+                @yield('admin')
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

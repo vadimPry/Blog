@@ -1,11 +1,11 @@
 @extends('admin.layouts.main')
-@section('content')
+@section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">
-                        <a style="text-decoration: none; color: #3d444b" href="{{ route('admin.main.index') }}">
+                        <a style="text-decoration: none; color: #3d444b" href="{{ route('admin.category.index') }}">
                             <i class="far fa-arrow-alt-circle-left"></i>
                         </a>
                         Users
@@ -14,7 +14,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v2</li>
+                        <li class="breadcrumb-item active">Users</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-2 mt-3">

@@ -1,6 +1,7 @@
 
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +15,59 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['namespace' => 'Blog'], function () {
+    // ** Main **
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('/', [\App\Http\Controllers\Blog\Main\IndexController::class, '__invoke'])->name('main.index');
+    });
+    // ** Posts **
+    Route::group(['namespace' => 'Post', 'prefix' => 'post'], function () {
+        Route::get('/', [\App\Http\Controllers\Blog\Post\IndexController::class, '__invoke'])->name('post.index');
+        Route::get('/{post}', [\App\Http\Controllers\Blog\Post\ShowController::class, '__invoke'])->name('post.show');
 
-Route::group(['namespace' => 'main'], function () {
-    Route::get('/', [\App\Http\Controllers\Main\IndexController::class, '__invoke'])->name('main');
+        Route::group(['namespace' => 'Comment', 'prefix' => '/{post}/comment'], function(){
+            Route::post('/', [\App\Http\Controllers\Blog\Post\Comment\StoreController::class, '__invoke'])->name('post.comment.store');
+        });
+
+        Route::group(['namespace' => 'Like', 'prefix' => '/{post}/like'], function(){
+            Route::post('/', [\App\Http\Controllers\Blog\Post\Like\StoreController::class, '__invoke'])->name('post.like.store');
+        });
+    });
+    // ** Category **
+    Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function(){
+        Route::get('/', [\App\Http\Controllers\Blog\Category\IndexController::class, '__invoke'])->name('category.index');
+
+        Route::group(['namespace' => 'Post', 'prefix' => '{category}/post'], function(){
+            Route::get('/', [\App\Http\Controllers\Blog\Category\Post\IndexController::class, '__invoke'])->name('category.post.index');
+        });
+    });
 });
 
+// ** Auth **
 Route::get('/login', function () {
     return view('auth');
 })->name('login');
 
+// ** Personal **
+Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('/', [\App\Http\Controllers\Personal\Main\IndexController::class, '__invoke'])->name('personal.main.index');
+    });
 
-Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::group(['namespace' => 'liked', 'prefix' => 'liked'], function () {
+        Route::get('/', [\App\Http\Controllers\Personal\Liked\IndexController::class, '__invoke'])->name('personal.liked.index');
+        Route::delete('/{post}', [\App\Http\Controllers\Personal\Liked\DeleteController::class, '__invoke'])->name('personal.liked.delete');
+    });
+
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function () {
+        Route::get('/', [\App\Http\Controllers\Personal\Comment\IndexController::class, '__invoke'])->name('personal.comment.index');
+        Route::get('/{comment}/edit', [\App\Http\Controllers\Personal\Comment\EditController::class, '__invoke'])->name('personal.comment.edit');
+        Route::patch('/{comment}', [\App\Http\Controllers\Personal\Comment\UpdateController::class, '__invoke'])->name('personal.comment.update');
+        Route::delete('/{comment}', [\App\Http\Controllers\Personal\Comment\DeleteController::class, '__invoke'])->name('personal.comment.delete');
+    });
+});
+// ** Admin **
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'main'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\Main\IndexController::class, '__invoke'])->name('admin.main.index');
     });
@@ -39,7 +82,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::delete('/{post}', [\App\Http\Controllers\Admin\Post\DeleteController::class, '__invoke'])->name('admin.post.delete');
     });
 
-    Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
+    Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\Category\IndexController::class, '__invoke'])->name('admin.category.index');
         Route::get('/create', [\App\Http\Controllers\Admin\Category\CreateController::class, '__invoke'])->name('admin.category.create');
         Route::post('/', [\App\Http\Controllers\Admin\Category\StoreController::class, '__invoke'])->name('admin.category.store');
@@ -72,7 +115,7 @@ Route::group(['namespace' => 'admin', 'prefix' => 'admin', 'middleware' => ['aut
 
 
 
-
-Auth::routes();
+//Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

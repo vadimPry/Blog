@@ -5,7 +5,7 @@
 
 ( function( factory ) {
 	"use strict";
-	
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -3300,7 +3300,7 @@ var effectsEffectExplode = $.effects.define( "explode", "hide", function( option
 			left = offset.left + j * width;
 			mx = j - ( cells - 1 ) / 2;
 
-			// Create a clone of the now hidden main element that will be absolute positioned
+			// Create a clone of the now hidden category element that will be absolute positioned
 			// within a wrapper div off the -left and -top equal to size of our pieces
 			element
 				.clone()
@@ -4449,7 +4449,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 	_destroy: function() {
 		var contents;
 
-		// Clean up main element
+		// Clean up category element
 		this.element.removeAttr( "role" );
 
 		// Clean up headers
@@ -5460,7 +5460,7 @@ var widgetsMenu = $.widget( "ui.menu", {
 			var currentMenu = all ? this.element :
 				$( event && event.target ).closest( this.element.find( ".ui-menu" ) );
 
-			// If we found no valid submenu ancestor, use the main menu to close all
+			// If we found no valid submenu ancestor, use the category menu to close all
 			// sub menus anyway
 			if ( !currentMenu.length ) {
 				currentMenu = this.element;
@@ -7345,7 +7345,7 @@ function Datepicker() {
 	this._disabledInputs = []; // List of date picker inputs that have been disabled
 	this._datepickerShowing = false; // True if the popup picker is showing , false if not
 	this._inDialog = false; // True if showing within a "dialog", false if not
-	this._mainDivId = "ui-datepicker-div"; // The ID of the main datepicker division
+	this._mainDivId = "ui-datepicker-div"; // The ID of the category datepicker division
 	this._inlineClass = "ui-datepicker-inline"; // The name of the inline marker class
 	this._appendClass = "ui-datepicker-append"; // The name of the append marker class
 	this._triggerClass = "ui-datepicker-trigger"; // The name of the trigger marker class
@@ -8393,7 +8393,7 @@ $.extend( Datepicker.prototype, {
 		}
 	},
 
-	/* Update any alternate field to synchronise with the main field. */
+	/* Update any alternate field to synchronise with the category field. */
 	_updateAlternate: function( inst ) {
 		var altFormat, date, dateStr,
 			altField = this._get( inst, "altField" );
@@ -9475,7 +9475,7 @@ $.fn.datepicker = function( options ) {
 		$.datepicker.initialized = true;
 	}
 
-	/* Append datepicker main container to body if not exist. */
+	/* Append datepicker category container to body if not exist. */
 	if ( $( "#" + $.datepicker._mainDivId ).length === 0 ) {
 		$( "body" ).append( $.datepicker.dpDiv );
 	}
@@ -12678,7 +12678,7 @@ $.widget( "ui.dialog", {
 			// Default to a non-submitting button
 			props = $.extend( { type: "button" }, props );
 
-			// Change the context for the click callback to be the main element
+			// Change the context for the click callback to be the category element
 			click = props.click;
 			buttonOptions = {
 				icon: props.icon,
@@ -15774,7 +15774,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 			this._cacheHelperProportions();
 		}
 
-		//Post "activate" events to possible containers
+		//Liked "activate" events to possible containers
 		if ( !noActivation ) {
 			for ( i = this.containers.length - 1; i >= 0; i-- ) {
 				this.containers[ i ]._trigger( "activate", event, this._uiHash( this ) );
@@ -15880,7 +15880,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 			this.helper[ 0 ].style.top = this.position.top + "px";
 		}
 
-		//Post events to containers
+		//Liked events to containers
 		this._contactContainers( event );
 
 		if ( this.innermostContainer !== null ) {
@@ -16026,7 +16026,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 				this.currentItem.show();
 			}
 
-			//Post deactivating events to containers
+			//Liked deactivating events to containers
 			for ( var i = this.containers.length - 1; i >= 0; i-- ) {
 				this.containers[ i ]._trigger( "deactivate", null, this._uiHash( this ) );
 				if ( this.containers[ i ].containerCache.over ) {
@@ -16992,7 +16992,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 			}
 		}
 
-		//Post events to containers
+		//Liked events to containers
 		function delayEvent( type, instance, container ) {
 			return function( event ) {
 				container._trigger( type, event, instance._uiHash( instance ) );
